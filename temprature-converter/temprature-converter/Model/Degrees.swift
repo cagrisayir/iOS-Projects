@@ -6,24 +6,31 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Degrees {
+@Observable class Degrees {
     var celsius: Double
-    var userInput: Double
+    var userInput: String
     var userInputType: INPUTTYPE
 
-    func calculateCelsius(degree: Double, type: INPUTTYPE) -> Double {
-        var result = 0
-        if type == INPUTTYPE.KELVIN {
+    init() {
+        celsius = 0
+        userInput = "0"
+        userInputType = .KELVIN
+    }
+
+    func calculateCelsius() {
+        if userInputType == INPUTTYPE.KELVIN {
             // Kelvin to celsius formula
-            return degree - 273.15
+            celsius = Double(userInput)! - 273.15
+        } else {
+            // Fahrenheit to celsius formula
+            celsius = (5 * (Double(userInput)! - 32)) / 9
         }
-        // Fahrenheit to celsius formula
-        return (5 * (degree - 32)) / 9
     }
 }
 
-enum INPUTTYPE {
+enum INPUTTYPE: CaseIterable {
     case KELVIN
     case FAHRENHEIT
 }
