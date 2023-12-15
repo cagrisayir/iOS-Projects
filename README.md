@@ -1,2 +1,4 @@
 # iOS-Projects
-iOS apps made with swift and swiftUI
+iOS apps made with Swift and SwiftUI.
+
+# Project 1 - Temprature Converter
